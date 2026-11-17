@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { FiChevronDown, FiX } from 'react-icons/fi'
-import { ButtonLink, SocialLinks } from '@/components/ui'
+import { AppLink, ButtonLink, SocialLinks } from '@/components/ui'
 import { useSite } from '@/context/site-context'
 import { cn } from '@/lib'
 import type { NavItem } from '@/types/navigation'
 import { Logo } from './Logo'
 import { NavBadge } from './NavBadge'
+import { NavSearchInput } from './NavSearchInput'
 
 interface MobileNavProps {
   items: NavItem[]
@@ -86,9 +87,21 @@ export function MobileNav({ items, open, onClose }: MobileNavProps) {
         </nav>
 
         <div className="mt-auto space-y-6 pt-8">
-          <ButtonLink href={navigation.cta.href} onClick={onClose} className="w-full">
-            {navigation.cta.label}
-          </ButtonLink>
+          <div className="grid grid-cols-2 gap-3">
+            {navigation.login.options.map((option, index) => (
+              <ButtonLink
+                key={option.id}
+                href={option.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                size="sm"
+                variant={index === 0 ? 'primary' : 'outline'}
+              >
+                {option.label}
+              </ButtonLink>
+            ))}
+          </div>
           <SocialLinks links={institute.socials} variant="outline" />
         </div>
       </div>
@@ -106,8 +119,12 @@ interface MobileNavItemProps {
 
 function MobileNavItem({ item, onNavigate, index, menuOpen }: MobileNavItemProps) {
   const [expanded, setExpanded] = useState(false)
+  const [search, setSearch] = useState('')
   const children = item.children ?? []
   const staggered = index !== undefined
+
+  // Entries marked "searchable" (e.g. Departments) only list the children that match the search box.
+  const visibleChildren = children.filter((child) => child.label.toLowerCase().includes(search.trim().toLowerCase()))
 
   const itemClass = cn(
     'border-b border-line',
@@ -121,10 +138,10 @@ function MobileNavItem({ item, onNavigate, index, menuOpen }: MobileNavItemProps
   if (children.length === 0) {
     return (
       <li className={itemClass} style={itemStyle}>
-        <a href={item.href ?? '#'} onClick={onNavigate} className={rowClass}>
+        <AppLink href={item.href ?? '#'} onClick={onNavigate} className={rowClass}>
           <span>{item.label}</span>
           {item.badge && <NavBadge>{item.badge}</NavBadge>}
-        </a>
+        </AppLink>
       </li>
     )
   }
@@ -148,9 +165,15 @@ function MobileNavItem({ item, onNavigate, index, menuOpen }: MobileNavItemProps
       >
         <div className="min-h-0 overflow-hidden">
           <ul className="mb-2 ml-2 border-l border-line pl-4">
-            {children.map((child) => (
+            {item.searchable && (
+              <li className="py-2">
+                <NavSearchInput label={item.label} value={search} onChange={setSearch} />
+              </li>
+            )}
+            {visibleChildren.map((child) => (
               <MobileNavItem key={child.id} item={child} onNavigate={onNavigate} />
             ))}
+            {visibleChildren.length === 0 && <li className="py-3 text-sm">No matches found</li>}
           </ul>
         </div>
       </div>

@@ -1,15 +1,6 @@
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import { useEffect, useState } from 'react'
 import type { RefObject } from 'react'
-
-const REDUCED_MOTION = '(prefers-reduced-motion: reduce)'
-
-function subscribeToReducedMotion(onChange: () => void) {
-  const query = window.matchMedia(REDUCED_MOTION)
-  query.addEventListener('change', onChange)
-  return () => query.removeEventListener('change', onChange)
-}
-
-const prefersReducedMotion = () => window.matchMedia(REDUCED_MOTION).matches
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 /**
  * Makes a tall list scroll upward by itself, forever, like a news ticker.
@@ -28,7 +19,7 @@ export function useAutoScroll(
   enabled: boolean,
   pixelsPerSecond = 36,
 ): boolean {
-  const reducedMotion = useSyncExternalStore(subscribeToReducedMotion, prefersReducedMotion, () => false)
+  const reducedMotion = usePrefersReducedMotion()
   const [overflowing, setOverflowing] = useState(false)
   const looping = overflowing && !reducedMotion
 

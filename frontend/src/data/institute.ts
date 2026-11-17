@@ -4,17 +4,19 @@ import type { Institute } from '@/types/institute'
 export const institute: Institute = {
   id: 'inst_masq_001',
   slug: 'masq-college',
-  name: 'MASQ College',
+  name: 'MASQ College of arts & Science',
   shortName: 'MASQ',
   tagline: 'Learn. Lead. Succeed.',
+  status: 'Autonomous',
+  accreditation: 'Accredited with "A" Grade by NAAC | Affiliated to Your University',
   description:
     'We are always in search of talented and motivated people. Join a college where learning goes beyond the classroom.',
-  logoUrl: '/logo.svg',
+  logoUrl: '/logo.png',
   address: {
     line1: '123 College Road',
-    city: 'Your City',
-    state: 'Your State',
-    postalCode: '000000',
+    city: 'Trichy',
+    state: 'Tamil Nadu',
+    postalCode: '987554',
     country: 'India',
   },
   contact: {

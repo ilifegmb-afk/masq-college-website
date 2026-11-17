@@ -18,7 +18,7 @@ export const home: HomeContent = {
         title: 'Build your career',
         highlight: 'with a college that cares',
         imageUrl: '/images/hero/admissions.jpg',
-        cta: { label: 'Apply Now', href: '/admissions/apply' },
+        cta: { label: 'Apply Now', href: '/admissions' },
       },
       {
         id: 'excellence',
@@ -42,7 +42,7 @@ export const home: HomeContent = {
   flashNews: {
     label: 'Flash News',
     items: [
-      { id: 'fn-admissions', text: 'Admissions open for 2026-27: apply online before 31 December', href: '/admissions/apply' },
+      { id: 'fn-admissions', text: 'Admissions open for 2026-27: apply online before 31 December', href: '/admissions' },
       { id: 'fn-exams', text: 'Semester end examinations begin 1 December: download your hall ticket', href: '/examination/hall-ticket' },
       { id: 'fn-fees', text: 'Last date for fee payment extended to 30 November', href: '#notices' },
       { id: 'fn-fest', text: 'Annual Cultural Fest on 15 January 2027: registrations now open', href: '#events' },
@@ -278,6 +278,20 @@ export const home: HomeContent = {
     ],
   },
 
+  // Placeholder figures - the college (later the admin panel) sets the real numbers each year.
+  stats: {
+    intro: {
+      title: 'Our college at a glance',
+      description: 'A growing community of learners and teachers across arts, science, commerce and management.',
+    },
+    items: [
+      { id: 'students', icon: 'students', value: 3500, suffix: '+', label: 'Students studying' },
+      { id: 'faculty', icon: 'faculty', value: 180, suffix: '+', label: 'Faculty members' },
+      { id: 'departments', icon: 'departments', value: 24, label: 'Departments' },
+      { id: 'programmes', icon: 'programmes', value: 40, suffix: '+', label: 'Programmes offered' },
+    ],
+  },
+
   categories: [
     { id: 'science', label: 'Science', imageUrl: '/images/categories/science.jpg', href: '#programs' },
     { id: 'commerce', label: 'Commerce', imageUrl: '/images/categories/commerce.jpg', href: '#programs' },
@@ -318,12 +332,12 @@ export const home: HomeContent = {
   programs: {
     intro: {
       title: 'Our programs',
-      action: { label: 'Browse all programs', href: '/academics/undergraduate' },
+      action: { label: 'Browse all programs', href: '/academics/programmes' },
     },
     items: [
-      { id: 'bsc-cs', title: 'B.Sc Computer Science', imageUrl: '/images/programs/bsc-cs.jpg', href: '/academics/undergraduate' },
-      { id: 'bcom', title: 'B.Com', imageUrl: '/images/programs/bcom.jpg', href: '/academics/undergraduate' },
-      { id: 'bba', title: 'BBA', imageUrl: '/images/programs/bba.jpg', href: '/academics/undergraduate' },
+      { id: 'bsc-cs', title: 'B.Sc Computer Science', imageUrl: '/images/programs/bsc-cs.jpg', href: '/academics/departments/computer-science/programmes' },
+      { id: 'bcom', title: 'B.Com', imageUrl: '/images/programs/bcom.jpg', href: '/academics/departments/commerce/programmes' },
+      { id: 'bba', title: 'BBA', imageUrl: '/images/programs/bba.jpg', href: '/academics/departments/business-administration/programmes' },
     ],
   },
 

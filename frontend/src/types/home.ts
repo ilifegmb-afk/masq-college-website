@@ -1,4 +1,6 @@
-import type { Attachment, LinkItem, ListSection, SectionIntro } from './common'
+import type { LinkItem, ListSection, Notice, SectionIntro } from './common'
+
+export type { Notice } from './common'
 
 export type FeatureIconName = 'heart' | 'book' | 'monitor' | 'award' | 'users' | 'globe'
 
@@ -31,17 +33,6 @@ export interface FlashNewsContent {
 }
 
 /* Announcements & noticeboard */
-export interface Notice {
-  id: string
-  title: string
-  /** ISO date, e.g. 2026-11-10 */
-  date: string
-  /** Optional page with the full notice. */
-  href?: string
-  /** Shows the "new" badge. */
-  isNew?: boolean
-  attachments?: Attachment[]
-}
 
 export interface NoticeCategory {
   id: string
@@ -81,6 +72,24 @@ export interface AboutContent {
   imageUrl: string
   videoUrl: string
   features: AboutFeature[]
+}
+
+/* College in numbers */
+export type StatIconName = 'students' | 'faculty' | 'departments' | 'programmes'
+
+export interface StatItem {
+  id: string
+  icon: StatIconName
+  value: number
+  /** Shown right after the number, e.g. "+" for "3,500+". */
+  suffix?: string
+  /** Sentence case, e.g. "Students studying". */
+  label: string
+}
+
+export interface StatsContent {
+  intro: SectionIntro
+  items: StatItem[]
 }
 
 /* Categories */
@@ -180,6 +189,7 @@ export interface HomeContent {
   flashNews: FlashNewsContent
   notices: NoticesContent
   about: AboutContent
+  stats: StatsContent
   categories: Category[]
   vision: VisionContent
   programs: ListSection<Program>

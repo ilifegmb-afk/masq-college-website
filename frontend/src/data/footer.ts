@@ -6,9 +6,9 @@ export const footer: FooterContent = {
       id: 'useful',
       title: 'Useful Links',
       links: [
-        { label: 'About Us', href: '#about' },
+        { label: 'About Us', href: '/about' },
         { label: 'Programs', href: '#programs' },
-        { label: 'Admissions', href: '/admissions/apply' },
+        { label: 'Admissions', href: '/admissions' },
         { label: 'FAQ', href: '/faq' },
         { label: 'Privacy Policy', href: '/privacy-policy' },
       ],
@@ -37,6 +37,6 @@ export const footer: FooterContent = {
   bottomLinks: [
     { label: 'Terms of Service', href: '/terms' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
-    { label: 'Admissions', href: '/admissions/apply' },
+    { label: 'Admissions', href: '/admissions' },
   ],
 }

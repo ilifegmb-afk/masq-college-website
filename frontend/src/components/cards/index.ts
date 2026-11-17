@@ -1,6 +1,11 @@
-// One component per kind of item (event card, notice row, ...).
+// One component per kind of item (event card, faculty card, ...).
 export { CategoryCard } from './CategoryCard'
+export { CourseCard } from './CourseCard'
+export { DepartmentCoursesCard } from './DepartmentCoursesCard'
 export { EventCard } from './EventCard'
-export { NoticeItem } from './NoticeItem'
+export { FacultyCard } from './FacultyCard'
+export { LeaderCard } from './LeaderCard'
+export { LeaderMessage } from './LeaderMessage'
 export { PostCard } from './PostCard'
 export { ProgramCard } from './ProgramCard'
+export { ResourceCard } from './ResourceCard'

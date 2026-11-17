@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import { getSiteContent } from '@/services/siteService'
 import type { SiteContent } from '@/types/site'
+import { useAsync } from './useAsync'
 
 interface SiteContentState {
   site: SiteContent | null
@@ -9,25 +9,6 @@ interface SiteContentState {
 
 /** Loads the institute's site content once on mount. */
 export function useSiteContent(): SiteContentState {
-  const [state, setState] = useState<SiteContentState>({ site: null, error: null })
-
-  useEffect(() => {
-    let cancelled = false
-
-    getSiteContent()
-      .then((site) => {
-        if (!cancelled) setState({ site, error: null })
-      })
-      .catch((err: unknown) => {
-        if (!cancelled) {
-          setState({ site: null, error: err instanceof Error ? err : new Error(String(err)) })
-        }
-      })
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
-
-  return state
+  const { data, error } = useAsync(getSiteContent)
+  return { site: data, error }
 }

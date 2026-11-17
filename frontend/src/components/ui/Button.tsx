@@ -1,5 +1,6 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
 import { cn } from '@/lib'
+import { AppLink } from './AppLink'
 
 type Variant = 'primary' | 'outline' | 'light'
 type Size = 'sm' | 'md'
@@ -35,6 +36,6 @@ export function Button({ variant, size, className, ...rest }: ButtonProps) {
 
 type ButtonLinkProps = StyleProps & AnchorHTMLAttributes<HTMLAnchorElement>
 
-export function ButtonLink({ variant, size, className, ...rest }: ButtonLinkProps) {
-  return <a className={styles({ variant, size }, className)} {...rest} />
+export function ButtonLink({ variant, size, className, href = '#', ...rest }: ButtonLinkProps) {
+  return <AppLink href={href} className={styles({ variant, size }, className)} {...rest} />
 }

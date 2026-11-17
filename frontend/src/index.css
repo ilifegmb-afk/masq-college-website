@@ -15,6 +15,64 @@
 
   /* Easing for menus and panels: quick start, soft landing ("ease-smooth"). */
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Popups (Modal): the box fades in while rising slightly, the dark backdrop fades in.
+     Closing is the same in reverse, a little quicker. */
+  --animate-popup-in: popup-in 0.3s var(--ease-smooth);
+  --animate-backdrop-in: backdrop-in 0.3s ease-out;
+  --animate-popup-out: popup-out 0.2s ease-in forwards;
+  --animate-backdrop-out: backdrop-out 0.2s ease-in forwards;
+  /* A bar that shrinks to nothing, showing the time left before a popup closes itself. The duration is set inline. */
+  --animate-countdown: countdown 3s linear forwards;
+
+  @keyframes popup-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes backdrop-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes popup-out {
+    from {
+      opacity: 1;
+      transform: none;
+    }
+    to {
+      opacity: 0;
+      transform: translateY(12px) scale(0.96);
+    }
+  }
+
+  @keyframes backdrop-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes countdown {
+    from {
+      transform: scaleX(1);
+    }
+    to {
+      transform: scaleX(0);
+    }
+  }
 }
 
 /*
@@ -63,4 +121,10 @@
   h6 {
     @apply font-semibold leading-tight text-heading;
   }
+}
+
+/* Faint dotted texture used on both sides of the header (see Header.tsx). */
+@utility dot-pattern {
+  background-image: radial-gradient(var(--color-line) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
 }

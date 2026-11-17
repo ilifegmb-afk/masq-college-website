@@ -11,12 +11,15 @@ import {
   PartnersSection,
   ProgramsSection,
   RecruitersSection,
+  StatsSection,
   TestimonialsSection,
   VisionSection,
 } from '@/features/home'
+import { useDocumentTitle } from '@/hooks'
 
 export function HomePage() {
   const { home, institute } = useSite()
+  useDocumentTitle(`${institute.name} | ${institute.tagline}`)
 
   return (
     <>
@@ -27,6 +30,7 @@ export function HomePage() {
       </div>
       <NoticesSection content={home.notices} />
       <AboutSection content={home.about} />
+      <StatsSection content={home.stats} />
       <CategoriesSection categories={home.categories} />
       <VisionSection content={home.vision} />
       <ProgramsSection content={home.programs} />

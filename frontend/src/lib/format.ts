@@ -44,3 +44,18 @@ export function formatAddress(address: Address): string {
 export function toTelHref(phone: string): string {
   return `tel:${phone.replace(/[^\d+]/g, '')}`
 }
+
+/** Formats a count with the locale's digit grouping, e.g. 125000 -> "1,25,000" in en-IN. */
+export function formatNumber(value: number, locale: string): string {
+  return new Intl.NumberFormat(locale).format(value)
+}
+
+/** Formats an amount of money with no decimals, e.g. 45000 -> "₹45,000" for INR in en-IN. */
+export function formatMoney(amount: number, currency: string, locale: string): string {
+  return new Intl.NumberFormat(locale, { style: 'currency', currency, maximumFractionDigits: 0 }).format(amount)
+}
+
+/** A course length in years, e.g. 1 -> "1 year", 3 -> "3 years". */
+export function formatYears(years: number): string {
+  return years === 1 ? '1 year' : `${years} years`
+}

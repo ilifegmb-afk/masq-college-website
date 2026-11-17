@@ -64,6 +64,18 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          {/* Developer credit: part of the template, the same on every college's site. */}
+          <p>
+            Crafted by{' '}
+            <a
+              href="https://ilifetech.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary transition-colors hover:text-secondary"
+            >
+              ILIFE Technologies
+            </a>
+          </p>
         </Container>
       </div>
     </footer>

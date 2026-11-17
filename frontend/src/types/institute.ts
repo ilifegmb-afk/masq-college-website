@@ -20,7 +20,12 @@ export interface Institute {
   slug: string
   name: string
   shortName: string
+  /** Slogan shown under the name, e.g. "Learn. Lead. Succeed." */
   tagline: string
+  /** Shown in brackets before the city in the header, e.g. "Autonomous". */
+  status?: string
+  /** Accreditation and affiliation line in the header, e.g. 'Accredited with "A" Grade by NAAC | Affiliated to ... University'. */
+  accreditation?: string
   description: string
   logoUrl: string
   address: Address

@@ -1,6 +1,7 @@
-import { AttachmentList } from '@/components/ui'
 import { useFormatters } from '@/hooks'
-import type { Notice } from '@/types/home'
+import type { Notice } from '@/types/common'
+import { AppLink } from './AppLink'
+import { AttachmentList } from './AttachmentList'
 
 interface NoticeItemProps {
   notice: Notice
@@ -32,9 +33,9 @@ export function NoticeItem({ notice, newLabel }: NoticeItemProps) {
         <h3 className="flex flex-wrap items-center gap-x-2 gap-y-1 text-base font-medium leading-snug">
           <span>
             {notice.href ? (
-              <a href={notice.href} className="transition-colors hover:text-primary">
+              <AppLink href={notice.href} className="transition-colors hover:text-primary">
                 {notice.title}
-              </a>
+              </AppLink>
             ) : (
               notice.title
             )}
